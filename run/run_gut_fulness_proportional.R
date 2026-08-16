@@ -165,6 +165,7 @@ ppcheck_plot =
                          stan_data,
                          title   = "B",
                          palette = "Bay",
+                         upperX = range(stan_data$GF)[2],
                          strip_text_size = 10)
 
 ### PLOT COEFFICIENTS ###

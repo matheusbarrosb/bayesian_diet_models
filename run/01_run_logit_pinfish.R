@@ -1,4 +1,5 @@
 #rm(list = ls())
+set.seed(444)
 # Packages ---------------------------------------------------------------------
 pack_list = c("dplyr", "rstan", "tidyr", "ggplot2", "purrr", "readr",
               "stringr", "here", "reshape2", "PNWColors", "ggpubr", "ggmcmc", "binom")

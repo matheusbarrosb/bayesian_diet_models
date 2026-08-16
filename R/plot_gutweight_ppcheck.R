@@ -4,7 +4,7 @@ plot_gutweight_ppcheck = function(
     spps = c("Pinfish", "Croaker", "Silver perch"),
     palette = "Bay",
     title,
-    upperX = 1.0,
+    upperX = 1,
     strip_text_size = 10
 ) {
   library(dplyr)
@@ -43,8 +43,8 @@ plot_gutweight_ppcheck = function(
     
     theta = plogis(post$omega[, s] + post$omega_TL[, s] * rep_TL)
     is_empty = rbinom(n_iter, 1, theta)
-    
-    GF_sim = ifelse(is_empty == 1, 0.5, rbeta(n_iter, mu * phi, (1 - mu) * phi))
+
+    GF_sim = rbeta(n_iter, mu * phi, (1 - mu) * phi)
     
     pred_df = rbind(pred_df, data.frame(
       species = spps[s],
