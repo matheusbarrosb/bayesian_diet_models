@@ -1,4 +1,4 @@
-rm()
+rm(list = ls())
 options(error = NULL)
 set.seed(444)
 # Packages ---------------------------------------------------------------------
@@ -29,14 +29,15 @@ wg_data =
   filter(Site %in% sites) %>%
   filter(Treatment %in% RS_levels) %>%
   group_by(Fish.ID, Fish_ID_year, Species.code, Site, Treatment, Length, Wet.Weight, Gut.weight) %>%
-  summarise(Z = as.numeric(any(Group == "Empty")), .groups = "drop")
+  summarise(.groups = "drop")
 
 n_distinct_fish =
   raw_data %>%
   filter(Species.code %in% spps, Site %in% sites, Treatment %in% RS_levels) %>%
   distinct(Fish.ID, Fish_ID_year, Species.code, Site, Treatment, Length, Wet.Weight, Gut.weight) %>%
   nrow()
-stopifnot(n_distinct_fish == nrow(wg_data))
+
+stopifnot(n_distinct_fish == nrow(wg_data)) # guardrail
 
 spp  = as.numeric(factor(wg_data$Species.code, levels = spps))
 site = as.numeric(factor(wg_data$Site, levels = sites))
@@ -44,7 +45,16 @@ RS   = as.numeric(factor(wg_data$Treatment, levels = RS_levels))
 GW   = as.numeric(wg_data$Gut.weight)
 FW   = as.numeric(wg_data$Wet.Weight)
 TL   = as.numeric(wg_data$Length)
-Z    = wg_data$Z
+
+# guardrails to ensure that the factor levels are consistent with the data
+stopifnot(identical(spp,  as.numeric(factor(wg_data$Species.code, levels = spps))))
+stopifnot(identical(site, as.numeric(factor(wg_data$Site,         levels = sites))))
+stopifnot(identical(RS,   as.numeric(factor(wg_data$Treatment,    levels = RS_levels))))
+
+stopifnot(!anyNA(spp), !anyNA(site), !anyNA(RS))
+stopifnot(all(spp %in% seq_along(spps)),
+          all(site %in% seq_along(sites)),
+          all(RS %in% seq_along(RS_levels)))
 
 # put everything into a dataframe and exclude NA values
 df =
@@ -54,8 +64,7 @@ df =
     RS   = RS,
     GW   = GW,
     FW   = FW,
-    TL   = TL,
-    Z    = Z
+    TL   = TL
   ) %>%
   filter(!is.na(spp) & !is.na(site) & !is.na(RS) & !is.na(FW) & !is.na(TL)) %>%
   filter(FW > 0) %>%
@@ -78,7 +87,6 @@ stan_data =
     site    = df$site,              
     status  = df$RS,                
     GF      = df$GF,
-    Z       = df$Z,
     TL      = df$TL,
     global_mean_TL = global_mean_TL
   )
@@ -126,12 +134,13 @@ if (file.exists(here::here("res", "fit_beta_reg.rds"))) {
 # plotting ---------------------------------------------------------------------
 fit = readRDS(here::here("res", "fit_beta_reg.rds"))
 
-### PROBABILITIES OF LS > CT ###
-species_names = c("Pinfish", "Croaker", "Silver perch")
-status_names  = c("CT", "LS") 
+#species_names = c("Pinfish", "Croaker", "Silver perch")
+spp_lookup = c(BAICHR = "Silver perch", LAGRHO = "Pinfish", MICUND = "Croaker")
+species_names = unname(spp_lookup[spps])
+stopifnot(!anyNA(species_names))   # guardail
+status_names  = c("CT", "LS")
 
-post = rstan::extract(fit, pars = c("beta_RS", "beta_site", "beta_TL", "beta_int", "alpha", "omega", "omega_TL", "phi", "y_hat_int"))
-post = rstan::extract(fit, pars = c("beta_RS", "beta_site", "beta_TL", "beta_int", "alpha", "omega", "omega_TL", "phi", "y_hat_int"))
+post = rstan::extract(fit, pars = c("beta_RS", "beta_site", "beta_TL", "beta_int", "alpha", "phi", "y_hat_int"))
 
 # calculate overall marginal beta_RS
 n_iter = dim(post$beta_RS)[1]
@@ -141,10 +150,7 @@ n_species = dim(post$beta_RS)[2]
 post$beta_RS_overall = array(NA, dim = c(n_iter, n_species, 1))
 
 for (s in 1:n_species) {
-  # average the interaction terms across all sites (including the baseline site, which is 0)
   avg_interaction = rowMeans(cbind(0, post$beta_int[, s, , 1]))
-  
-  # overall effect = Baseline effect + Average interaction
   post$beta_RS_overall[, s, 1] = post$beta_RS[, s, 1] + avg_interaction
 }
 
@@ -161,18 +167,19 @@ post_diffs_plot =
 
 ### PREDICTIVE CHECK ###
 ppcheck_plot =
-  plot_gutweight_ppcheck(post,
-                         stan_data,
-                         title   = "B",
-                         palette = "Bay",
-                         upperX = range(stan_data$GF)[2],
+  plot_gutweight_ppcheck(post          = post,
+                         stan_data     = stan_data,
+                         spps          = species_names,
+                         title         = "B",
+                         palette       = "Bay",
+                         upperX        = range(stan_data$GF, na.rm = TRUE)[2],
                          strip_text_size = 10)
 
 ### PLOT COEFFICIENTS ###
 coef_plot =
   plot_betas(
     post          = post,
-    spps          = c("Pinfish", "Croaker", "Silver perch"),
+    spps          = species_names, # now matches the order that went into the model
     site_labels   = c("AM", "DR", "HWP", "LB", "NEPaP", "SA", "CI"),
     status_labels = c("CT", "LS"),
     param_panels  = c("beta_RS_overall", "beta_TL"),
@@ -215,15 +222,6 @@ spp_labs = c(
   MICUND = "Croaker",
   BAICHR = "Silver perch"
 )
-
-# verify how many empty stomachs have weights
-print(
-  raw_data %>%
-    filter(Species.code %in% c("LAGRHO", "MICUND", "BAICHR")) %>%
-    filter(Gut.weight > 0.0005) %>%
-    group_by(Group) %>%
-    summarize(count = n())
-  ,n = 100)
 
 # original scale
 raw_data %>%
@@ -270,18 +268,3 @@ raw_data %>%
   ylab("log Gut weight (g)") +
   theme(legend.position = "right", legend.title = element_blank()) +
   scale_color_manual(values = pnw_palette("Bay", 2))
-
-# count the number and proportion of empty stomachs per species
-raw_data %>%
-  filter(Species.code %in% c("LAGRHO", "MICUND", "BAICHR")) %>%
-  mutate(Species.code = recode(Species.code, !!!spp_labs)) %>%
-  mutate(Species.code = factor(Species.code,
-                               levels = c("Pinfish", "Croaker", "Silver perch"))) %>%
-  group_by(Group, Species.code) %>%
-  mutate(Gut_Status = ifelse(Group == "Empty", "Empty", "Non-empty")) %>%
-  group_by(Species.code) %>%
-  summarize(
-    total = n(),
-    empty = sum(Gut_Status == "Empty"),
-    prop_empty = empty / total
-  )

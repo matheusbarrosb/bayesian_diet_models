@@ -27,7 +27,6 @@ plot_post_diffs = function(
       diff = mu_LS - mu_CT
       x_label = "Absolute difference in % gut fullness"
     } else {
-      # In dummy coding, beta_RS[, s, 1] is exactly the logit difference (LS - CT)
       diff = post$beta_RS[, s, 1]
       x_label = "Posterior difference (Logit scale)"
     }
