@@ -9,20 +9,11 @@ lapply(pack_list, library, character.only = TRUE)
 # descriptive FO function -------------------------------------------------------
 get_descriptive_FO = function(prey_mat, status, prey_names) {
   purrr::map_dfr(seq_along(prey_names), function(j) {
-    x_ct = sum(prey_mat[status == 1, j])
-    n_ct = sum(status == 1)
-    x_ls = sum(prey_mat[status == 2, j])
-    n_ls = sum(status == 2)
-    
+    x_ct = sum(prey_mat[status == 1, j]); n_ct = sum(status == 1)
+    x_ls = sum(prey_mat[status == 2, j]); n_ls = sum(status == 2)
     ft = fisher.test(matrix(c(x_ls, n_ls - x_ls, x_ct, n_ct - x_ct), nrow = 2))
-    
-    data.frame(
-      Prey = prey_names[j],
-      FO_CT = x_ct/n_ct,
-      FO_LS = x_ls/n_ls,
-      Desc_diff = x_ls/n_ls - x_ct / n_ct,
-      Desc_fisher_p = ft$p.value
-    )
+    data.frame(Prey = prey_names[j], FO_CT = x_ct/n_ct, FO_LS = x_ls/n_ls,
+               Desc_diff = x_ls/n_ls - x_ct/n_ct, Desc_fisher_p = ft$p.value)
   })
 }
 
@@ -48,17 +39,15 @@ species_config = list(
 desc_all = purrr::imap_dfr(species_config, function(cfg, sp_name) {
   wg_data =
     raw_data %>%
-    filter(Species.code %in% cfg$spps) %>%
-    filter(Site %in% cfg$sites) %>%
-    filter(Treatment %in% RS_levels) %>%
+    filter(Species.code %in% cfg$spps, Site %in% cfg$sites, Treatment %in% RS_levels) %>%
     filter(Group %in% cfg$prey) %>%
     mutate(present = 1) %>%
-    pivot_wider(names_from = Group, values_from = present,
-                values_fill = list(present = 0))
-  
+    pivot_wider(
+      id_cols = c(Fish.ID, Fish_ID_year, Species.code, Site, Treatment, Length, Wet.Weight, Gut.weight),
+      names_from = Group, values_from = present, values_fn = ~1, values_fill = 0
+    )
   prey_mat = wg_data %>% select(all_of(cfg$prey)) %>% as.matrix()
   status = as.numeric(factor(wg_data$Treatment, levels = RS_levels))
-  
   out = get_descriptive_FO(prey_mat, status, cfg$prey)
   out$Species = sp_name
   out
@@ -78,7 +67,7 @@ fo_comparison =
     Model_sig & !Desc_fisher_sig ~ "Model only",
     !Model_sig & Desc_fisher_sig ~ "Descriptive only")) %>%
   select(Species, Prey, FO_CT, FO_LS, Desc_diff, Desc_fisher_p, Model_diff, Model_P, Agreement) %>%
-  mutate(across(where(is.numeric), ~ round(., 2)))
+  mutate(across(where(is.numeric), ~ round(., 4)))
 
 write.csv(fo_comparison, here::here("res", "tables", "FO_comparison_supplement.csv"), row.names = FALSE)
 fo_comparison

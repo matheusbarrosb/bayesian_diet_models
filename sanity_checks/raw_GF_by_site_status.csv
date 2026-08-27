@@ -1,0 +1,23 @@
+"species","Site","status","n","mean_GF","sd_GF","se_GF"
+"Croaker","CI","Control",35,0.019,0.007,0.0012
+"Croaker","DR","Control",12,0.031,0.0098,0.0028
+"Croaker","HWP","Restored",16,0.052,0.0099,0.0025
+"Croaker","NEPaP","Control",43,0.022,0.0082,0.0013
+"Croaker","NEPaP","Restored",12,0.026,0.0051,0.0015
+"Croaker","SA","Restored",32,0.032,0.0098,0.0017
+"Pinfish","AM","Control",53,0.067,0.0221,0.003
+"Pinfish","CI","Control",5,0.019,0.0053,0.0024
+"Pinfish","CI","Restored",3,0.024,0.0066,0.0038
+"Pinfish","DR","Control",32,0.048,0.0143,0.0025
+"Pinfish","HWP","Restored",14,0.061,0.0157,0.0042
+"Pinfish","LB","Control",41,0.051,0.0217,0.0034
+"Pinfish","NEPaP","Control",14,0.064,0.0455,0.0122
+"Pinfish","NEPaP","Restored",146,0.045,0.0346,0.0029
+"Pinfish","SA","Restored",66,0.067,0.0298,0.0037
+"Silver perch","CI","Control",20,0.024,0.0122,0.0027
+"Silver perch","CI","Restored",2,0.028,0.0042,0.003
+"Silver perch","DR","Control",5,0.031,0.005,0.0022
+"Silver perch","HWP","Restored",3,0.09,0.0084,0.0048
+"Silver perch","NEPaP","Control",48,0.018,0.0145,0.0021
+"Silver perch","NEPaP","Restored",103,0.035,0.0186,0.0018
+"Silver perch","SA","Restored",68,0.053,0.0355,0.0043
