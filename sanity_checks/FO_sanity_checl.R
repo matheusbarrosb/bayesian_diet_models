@@ -21,18 +21,27 @@ species_config = list(
 
  raw_data = read.csv(here::here("data", "rawData.csv"))
 
-build_presence = function(cfg, sp_name) {
-  raw_data %>%
-    filter(Species.code %in% cfg$spps, Site %in% cfg$sites, Treatment %in% RS_levels) %>%
-    filter(Group %in% cfg$prey) %>%
-    mutate(present = 1) %>%
-    pivot_wider(names_from = Group, values_from = present,
-                values_fill = list(present = 0)) %>%
-    mutate(status = ifelse(Treatment == "LS", "Restored", "Control"),
-           Species = sp_name)
-}
+ build_presence = function(cfg, sp_name) {
+   raw_data %>%
+     filter(Species.code %in% cfg$spps, Site %in% cfg$sites, Treatment %in% RS_levels) %>%
+     filter(Group %in% cfg$prey) %>%
+     mutate(present = 1) %>%
+     pivot_wider(
+       id_cols = c(Fish.ID, Fish_ID_year, Species.code, Site, Treatment, Length, Wet.Weight, Gut.weight),
+       names_from = Group,
+       values_from = present,
+       values_fn = ~1,
+       values_fill = 0
+     ) %>%
+     mutate(status = ifelse(Treatment == "LS", "Restored", "Control"),
+            Species = sp_name)
+ }
 
 pres_all = imap(species_config, build_presence)
+
+pres_all$Pinfish %>% count(Treatment)        # expect 116 CT / 208 LS
+pres_all$Croaker %>% count(Treatment)        # expect 74 CT / 43 LS
+pres_all$`Silver perch` %>% count(Treatment) # expect 50 CT / 169 LS
 
 ### 1. FO by status (overall) ###
 fo_status = imap_dfr(species_config, function(cfg, sp_name) {
@@ -119,8 +128,6 @@ raw_n = fo_status %>%
   distinct(Species, status, n) %>%
   arrange(Species, status)
 print(raw_n)
-
-
 
 
 

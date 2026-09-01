@@ -20,7 +20,7 @@ get_descriptive_FO = function(prey_mat, status, prey_names) {
 # load data ----------------------------------------------------------------------
 data_dir = here::here("data")
 raw_data = read.csv(file.path(data_dir, "rawData.csv"))
-raw_data = raw_data %>% filter(!(Species.code == "BAICHR" & Site == "CI" & Treatment == "LS"))
+#raw_data = raw_data %>% filter(!(Species.code == "BAICHR" & Site == "CI" & Treatment == "LS"))
 RS_levels = sort(c("CT", "LS"))
 
 species_config = list(

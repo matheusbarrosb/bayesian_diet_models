@@ -1,10 +1,10 @@
 "species","Site","status","n","mean_GF","sd_GF","se_GF"
 "Croaker","CI","Control",35,0.019,0.007,0.0012
 "Croaker","DR","Control",12,0.031,0.0098,0.0028
-"Croaker","HWP","Restored",16,0.052,0.0099,0.0025
-"Croaker","NEPaP","Control",43,0.022,0.0082,0.0013
+"Croaker","HWP","Restored",15,0.053,0.0095,0.0025
+"Croaker","NEPaP","Control",42,0.022,0.0083,0.0013
 "Croaker","NEPaP","Restored",12,0.026,0.0051,0.0015
-"Croaker","SA","Restored",32,0.032,0.0098,0.0017
+"Croaker","SA","Restored",31,0.032,0.0098,0.0018
 "Pinfish","AM","Control",53,0.067,0.0221,0.003
 "Pinfish","CI","Control",5,0.019,0.0053,0.0024
 "Pinfish","CI","Restored",3,0.024,0.0066,0.0038

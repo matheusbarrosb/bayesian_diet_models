@@ -1,79 +1,79 @@
 "Site","Prey","n","Observed","Species","Model_Mean","Model_Lower","Model_Upper","covered"
-"AM","Amphipod",68,0.5,"Pinfish",0.483,0.219,0.756,TRUE
-"AM","Crustacean",68,0.324,"Pinfish",0.482,0.218,0.751,TRUE
-"AM","Fish",68,0.074,"Pinfish",0.173,0.042,0.361,TRUE
-"AM","Isopod",68,0,"Pinfish",0.026,0.002,0.064,FALSE
-"AM","Polychaete",68,0.118,"Pinfish",0.234,0.067,0.458,TRUE
-"AM","SAV",68,0,"Pinfish",0.248,0.061,0.502,FALSE
-"AM","Tanaidacea",68,0.015,"Pinfish",0.076,0.011,0.177,TRUE
-"DR","Amphipod",50,0.76,"Pinfish",0.659,0.39,0.884,TRUE
-"DR","Crustacean",50,0.12,"Pinfish",0.302,0.1,0.554,TRUE
-"DR","Fish",50,0,"Pinfish",0.059,0.007,0.141,FALSE
-"DR","Isopod",50,0,"Pinfish",0.028,0.002,0.068,FALSE
-"DR","Polychaete",50,0.06,"Pinfish",0.167,0.04,0.348,TRUE
-"DR","SAV",50,0.06,"Pinfish",0.444,0.175,0.73,FALSE
-"DR","Tanaidacea",50,0,"Pinfish",0.051,0.005,0.125,FALSE
-"HWP","Amphipod",37,0.432,"Pinfish",0.652,0.367,0.894,TRUE
-"HWP","Crustacean",37,0.243,"Pinfish",0.608,0.325,0.856,FALSE
-"HWP","Fish",37,0,"Pinfish",0.088,0.01,0.211,FALSE
-"HWP","Isopod",37,0.054,"Pinfish",0.072,0.01,0.167,TRUE
-"HWP","Polychaete",37,0.162,"Pinfish",0.322,0.105,0.591,TRUE
-"HWP","SAV",37,0.081,"Pinfish",0.435,0.169,0.722,FALSE
-"HWP","Tanaidacea",37,0.081,"Pinfish",0.174,0.035,0.377,TRUE
-"LB","Amphipod",35,0.343,"Pinfish",0.389,0.149,0.659,TRUE
-"LB","Crustacean",35,0.343,"Pinfish",0.469,0.203,0.741,TRUE
-"LB","Fish",35,0.029,"Pinfish",0.099,0.017,0.226,TRUE
-"LB","Isopod",35,0,"Pinfish",0.031,0.002,0.076,FALSE
-"LB","Polychaete",35,0.314,"Pinfish",0.405,0.156,0.681,TRUE
-"LB","SAV",35,0.057,"Pinfish",0.423,0.16,0.71,FALSE
-"LB","Tanaidacea",35,0,"Pinfish",0.055,0.005,0.137,FALSE
-"NEPaP","Amphipod",209,0.215,"Pinfish",0.122,0.043,0.227,TRUE
-"NEPaP","Crustacean",209,0.349,"Pinfish",0.674,0.477,0.848,FALSE
-"NEPaP","Fish",209,0.043,"Pinfish",0.136,0.04,0.263,TRUE
-"NEPaP","Isopod",209,0.019,"Pinfish",0.02,0.003,0.044,TRUE
-"NEPaP","Polychaete",209,0.163,"Pinfish",0.151,0.054,0.277,TRUE
-"NEPaP","SAV",209,0.263,"Pinfish",0.637,0.421,0.828,FALSE
-"NEPaP","Tanaidacea",209,0.005,"Pinfish",0.023,0.003,0.051,TRUE
-"SA","Amphipod",124,0.395,"Pinfish",0.394,0.151,0.669,TRUE
-"SA","Crustacean",124,0.306,"Pinfish",0.581,0.31,0.829,FALSE
-"SA","Fish",124,0,"Pinfish",0.051,0.006,0.12,FALSE
-"SA","Isopod",124,0.032,"Pinfish",0.035,0.004,0.083,TRUE
-"SA","Polychaete",124,0.145,"Pinfish",0.217,0.061,0.427,TRUE
-"SA","SAV",124,0.161,"Pinfish",0.559,0.283,0.815,FALSE
-"SA","Tanaidacea",124,0.024,"Pinfish",0.066,0.01,0.153,TRUE
-"CI","Amphipod",37,0.378,"Croaker",0.45,0.18,0.735,TRUE
-"CI","Crustacean",37,0.514,"Croaker",0.653,0.375,0.883,TRUE
-"CI","Fish",37,0.27,"Croaker",0.319,0.103,0.584,TRUE
-"CI","Isopod",37,0,"Croaker",0.007,0,0.016,TRUE
-"CI","Polychaete",37,0.108,"Croaker",0.308,0.094,0.576,TRUE
-"CI","Tanaidacea",37,0.027,"Croaker",0.014,0.001,0.035,TRUE
-"NEPaP","Amphipod",69,0.174,"Croaker",0.279,0.125,0.465,TRUE
-"NEPaP","Crustacean",69,0.565,"Croaker",0.707,0.516,0.871,TRUE
-"NEPaP","Fish",69,0.348,"Croaker",0.466,0.262,0.675,TRUE
-"NEPaP","Isopod",69,0,"Croaker",0.007,0,0.017,TRUE
-"NEPaP","Polychaete",69,0.101,"Croaker",0.232,0.095,0.405,TRUE
-"NEPaP","Tanaidacea",69,0.014,"Croaker",0.015,0.001,0.038,TRUE
-"SA","Amphipod",46,0.391,"Croaker",0.515,0.227,0.795,TRUE
-"SA","Crustacean",46,0.435,"Croaker",0.664,0.382,0.893,TRUE
-"SA","Fish",46,0.087,"Croaker",0.254,0.068,0.498,TRUE
-"SA","Isopod",46,0.065,"Croaker",0.018,0.001,0.046,FALSE
-"SA","Polychaete",46,0.326,"Croaker",0.397,0.143,0.685,TRUE
-"SA","Tanaidacea",46,0,"Croaker",0.009,0,0.023,TRUE
-"CI","Amphipod",34,0.235,"Silver perch",0.213,0.062,0.415,TRUE
-"CI","Crustacean",34,0.735,"Silver perch",0.884,0.743,0.978,FALSE
-"CI","Fish",34,0.029,"Silver perch",0.149,0.03,0.323,FALSE
-"CI","Isopod",34,0.029,"Silver perch",0.086,0.012,0.204,TRUE
-"CI","Polychaete",34,0,"Silver perch",0.1,0.014,0.234,FALSE
-"CI","Tanaidacea",34,0,"Silver perch",0.015,0.001,0.038,FALSE
-"NEPaP","Amphipod",190,0.389,"Silver perch",0.408,0.219,0.609,TRUE
-"NEPaP","Crustacean",190,0.479,"Silver perch",0.6,0.394,0.792,TRUE
-"NEPaP","Fish",190,0.079,"Silver perch",0.191,0.074,0.343,TRUE
-"NEPaP","Isopod",190,0.037,"Silver perch",0.068,0.018,0.138,TRUE
-"NEPaP","Polychaete",190,0.1,"Silver perch",0.113,0.034,0.221,TRUE
-"NEPaP","Tanaidacea",190,0.016,"Silver perch",0.017,0.002,0.038,TRUE
-"SA","Amphipod",100,0.24,"Silver perch",0.263,0.081,0.498,TRUE
-"SA","Crustacean",100,0.61,"Silver perch",0.818,0.626,0.954,FALSE
-"SA","Fish",100,0.11,"Silver perch",0.262,0.078,0.5,TRUE
-"SA","Isopod",100,0.03,"Silver perch",0.082,0.014,0.186,TRUE
-"SA","Polychaete",100,0.14,"Silver perch",0.203,0.053,0.412,TRUE
-"SA","Tanaidacea",100,0,"Silver perch",0.01,0,0.025,TRUE
+"AM","Amphipod",47,0.617,"Pinfish",0.483,0.219,0.756,TRUE
+"AM","Crustacean",47,0.468,"Pinfish",0.482,0.218,0.751,TRUE
+"AM","Fish",47,0.106,"Pinfish",0.173,0.042,0.361,TRUE
+"AM","Isopod",47,0,"Pinfish",0.026,0.002,0.064,FALSE
+"AM","Polychaete",47,0.17,"Pinfish",0.234,0.067,0.458,TRUE
+"AM","SAV",47,0,"Pinfish",0.248,0.061,0.502,FALSE
+"AM","Tanaidacea",47,0.021,"Pinfish",0.076,0.011,0.177,TRUE
+"DR","Amphipod",31,0.839,"Pinfish",0.659,0.39,0.884,TRUE
+"DR","Crustacean",31,0.194,"Pinfish",0.302,0.1,0.554,TRUE
+"DR","Fish",31,0,"Pinfish",0.059,0.007,0.141,FALSE
+"DR","Isopod",31,0,"Pinfish",0.028,0.002,0.068,FALSE
+"DR","Polychaete",31,0.097,"Pinfish",0.167,0.04,0.348,TRUE
+"DR","SAV",31,0.097,"Pinfish",0.444,0.175,0.73,FALSE
+"DR","Tanaidacea",31,0,"Pinfish",0.051,0.005,0.125,FALSE
+"HWP","Amphipod",14,0.929,"Pinfish",0.652,0.367,0.894,FALSE
+"HWP","Crustacean",14,0.643,"Pinfish",0.608,0.325,0.856,TRUE
+"HWP","Fish",14,0,"Pinfish",0.088,0.01,0.211,FALSE
+"HWP","Isopod",14,0.143,"Pinfish",0.072,0.01,0.167,TRUE
+"HWP","Polychaete",14,0.429,"Pinfish",0.322,0.105,0.591,TRUE
+"HWP","SAV",14,0.214,"Pinfish",0.435,0.169,0.722,TRUE
+"HWP","Tanaidacea",14,0.214,"Pinfish",0.174,0.035,0.377,TRUE
+"LB","Amphipod",27,0.444,"Pinfish",0.389,0.149,0.659,TRUE
+"LB","Crustacean",27,0.444,"Pinfish",0.469,0.203,0.741,TRUE
+"LB","Fish",27,0.037,"Pinfish",0.099,0.017,0.226,TRUE
+"LB","Isopod",27,0,"Pinfish",0.031,0.002,0.076,FALSE
+"LB","Polychaete",27,0.407,"Pinfish",0.405,0.156,0.681,TRUE
+"LB","SAV",27,0.074,"Pinfish",0.423,0.16,0.71,FALSE
+"LB","Tanaidacea",27,0,"Pinfish",0.055,0.005,0.137,FALSE
+"NEPaP","Amphipod",141,0.312,"Pinfish",0.122,0.043,0.227,FALSE
+"NEPaP","Crustacean",141,0.489,"Pinfish",0.674,0.477,0.848,TRUE
+"NEPaP","Fish",141,0.057,"Pinfish",0.136,0.04,0.263,TRUE
+"NEPaP","Isopod",141,0.028,"Pinfish",0.02,0.003,0.044,TRUE
+"NEPaP","Polychaete",141,0.234,"Pinfish",0.151,0.054,0.277,TRUE
+"NEPaP","SAV",141,0.39,"Pinfish",0.637,0.421,0.828,FALSE
+"NEPaP","Tanaidacea",141,0.007,"Pinfish",0.023,0.003,0.051,TRUE
+"SA","Amphipod",64,0.641,"Pinfish",0.394,0.151,0.669,TRUE
+"SA","Crustacean",64,0.578,"Pinfish",0.581,0.31,0.829,TRUE
+"SA","Fish",64,0,"Pinfish",0.051,0.006,0.12,FALSE
+"SA","Isopod",64,0.062,"Pinfish",0.035,0.004,0.083,TRUE
+"SA","Polychaete",64,0.281,"Pinfish",0.217,0.061,0.427,TRUE
+"SA","SAV",64,0.312,"Pinfish",0.559,0.283,0.815,TRUE
+"SA","Tanaidacea",64,0.047,"Pinfish",0.066,0.01,0.153,TRUE
+"CI","Amphipod",34,0.412,"Croaker",0.446,0.18,0.731,TRUE
+"CI","Crustacean",34,0.559,"Croaker",0.654,0.377,0.883,TRUE
+"CI","Fish",34,0.294,"Croaker",0.32,0.104,0.589,TRUE
+"CI","Isopod",34,0,"Croaker",0.007,0,0.017,FALSE
+"CI","Polychaete",34,0.118,"Croaker",0.309,0.094,0.578,TRUE
+"CI","Tanaidacea",34,0.029,"Croaker",0.014,0.001,0.035,TRUE
+"NEPaP","Amphipod",52,0.231,"Croaker",0.279,0.124,0.467,TRUE
+"NEPaP","Crustacean",52,0.692,"Croaker",0.706,0.517,0.871,TRUE
+"NEPaP","Fish",52,0.462,"Croaker",0.467,0.261,0.678,TRUE
+"NEPaP","Isopod",52,0,"Croaker",0.007,0,0.017,FALSE
+"NEPaP","Polychaete",52,0.135,"Croaker",0.233,0.095,0.406,TRUE
+"NEPaP","Tanaidacea",52,0.019,"Croaker",0.015,0.001,0.038,TRUE
+"SA","Amphipod",31,0.581,"Croaker",0.515,0.228,0.796,TRUE
+"SA","Crustacean",31,0.645,"Croaker",0.664,0.38,0.895,TRUE
+"SA","Fish",31,0.129,"Croaker",0.253,0.067,0.497,TRUE
+"SA","Isopod",31,0.097,"Croaker",0.019,0.001,0.046,FALSE
+"SA","Polychaete",31,0.484,"Croaker",0.401,0.143,0.692,TRUE
+"SA","Tanaidacea",31,0,"Croaker",0.009,0,0.023,FALSE
+"CI","Amphipod",20,0.35,"Silver perch",0.214,0.061,0.418,TRUE
+"CI","Crustacean",20,0.95,"Silver perch",0.883,0.743,0.978,TRUE
+"CI","Fish",20,0.05,"Silver perch",0.15,0.031,0.323,TRUE
+"CI","Isopod",20,0.05,"Silver perch",0.086,0.013,0.202,TRUE
+"CI","Polychaete",20,0,"Silver perch",0.1,0.014,0.231,FALSE
+"CI","Tanaidacea",20,0,"Silver perch",0.015,0.001,0.037,FALSE
+"NEPaP","Amphipod",131,0.542,"Silver perch",0.41,0.22,0.613,TRUE
+"NEPaP","Crustacean",131,0.634,"Silver perch",0.601,0.394,0.792,TRUE
+"NEPaP","Fish",131,0.115,"Silver perch",0.191,0.075,0.34,TRUE
+"NEPaP","Isopod",131,0.053,"Silver perch",0.067,0.018,0.137,TRUE
+"NEPaP","Polychaete",131,0.145,"Silver perch",0.113,0.033,0.221,TRUE
+"NEPaP","Tanaidacea",131,0.023,"Silver perch",0.017,0.002,0.038,TRUE
+"SA","Amphipod",68,0.338,"Silver perch",0.266,0.081,0.506,TRUE
+"SA","Crustacean",68,0.882,"Silver perch",0.818,0.626,0.955,TRUE
+"SA","Fish",68,0.162,"Silver perch",0.262,0.077,0.503,TRUE
+"SA","Isopod",68,0.044,"Silver perch",0.082,0.014,0.186,TRUE
+"SA","Polychaete",68,0.206,"Silver perch",0.202,0.053,0.41,TRUE
+"SA","Tanaidacea",68,0,"Silver perch",0.01,0,0.025,FALSE

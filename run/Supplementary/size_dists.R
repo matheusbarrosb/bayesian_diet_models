@@ -8,8 +8,7 @@ lapply(fun_files, source)
 
 data_dir = here::here("data")
 raw_data = read.csv(file.path(data_dir, "rawData.csv"))
-raw_data = raw_data %>% filter(!(Species.code == "BAICHR" & Site == "CI" & Treatment == "LS"))
-
+#raw_data = raw_data %>% filter(!(Species.code == "BAICHR" & Site == "CI" & Treatment == "LS"))
 RS_levels = sort(c("CT", "LS"))
 
 species_config = list(
@@ -32,7 +31,10 @@ wg_data_all = purrr::imap_dfr(species_config, function(cfg, sp_name) {
     filter(Treatment %in% RS_levels) %>%
     filter(Group %in% cfg$prey) %>%
     mutate(present = 1) %>%
-    pivot_wider(names_from = Group, values_from = present, values_fill = list(present = 0)) %>%
+    pivot_wider(
+      id_cols = c(Fish.ID, Fish_ID_year, Species.code, Site, Treatment, Length, Wet.Weight, Gut.weight),
+      names_from = Group, values_from = present, values_fn = ~1, values_fill = 0
+    ) %>%
     select(Site, Treatment, Species.code, Length, Wet.Weight, Gut.weight)
   
   out$Species = sp_name
@@ -42,7 +44,8 @@ wg_data_all = purrr::imap_dfr(species_config, function(cfg, sp_name) {
 sample_sizes_per_site_spp =
   wg_data_all %>%
   group_by(Site, Species) %>%
-  summarise(n = n(), .groups = "drop")
+  summarise(n = n(), .groups = "drop");sample_sizes_per_site_spp
+
 
 wg_data_all %>%
   ggplot(aes(x = Length, fill = Species)) +
