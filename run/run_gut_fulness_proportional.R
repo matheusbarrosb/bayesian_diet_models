@@ -1,5 +1,5 @@
 rm(list = ls())
-options(error = NULL)
+options(error = NULL, warn = -1)
 set.seed(444)
 # Packages ---------------------------------------------------------------------
 pack_list = c("dplyr", "rstan", "tidyr", "ggplot2", "purrr", "readr",
@@ -96,7 +96,7 @@ model_dir = here::here("stan/")
 stanc(paste0(model_dir, "GF_beta_reg.stan"))
 rstan_options(auto_write = TRUE)
 
-REFIT = FALSE
+REFIT = TRUE
 
 # load fit object if it exists
 if (file.exists(here::here("res", "fit_beta_reg.rds"))) {
@@ -118,9 +118,10 @@ if (is.null(fit) || REFIT) {
     warmup  = 1000,        
     cores   = 3,        
     seed    = 427,
-    control = list(adapt_delta = 0.95,
-                   max_treedepth = 20)
-  )
+    control = list(adapt_delta = 0.99,
+                   max_treedepth = 30),
+    verbose = FALSE
+    )
 }
 
 # save fit if NULL
