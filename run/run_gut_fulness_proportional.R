@@ -109,17 +109,17 @@ if (file.exists(here::here("res", "fit_beta_reg.rds"))) {
 # if fit is NULL or REFIT is TRUE, run the model
 if (is.null(fit) || REFIT) {
   message("Running the model...")
-  set.seed(413)
+  set.seed(444)
   fit = stan(
     file    = paste0(model_dir, "GF_beta_reg.stan"),  
     data    = stan_data,
-    chains  = 3,        
-    iter    = 10000,      
+    chains  = 1,        
+    iter    = 5000,      
     warmup  = 1000,        
-    cores   = 3,        
+    cores   = 1,        
     seed    = 427,
     control = list(adapt_delta = 0.99,
-                   max_treedepth = 30),
+                   max_treedepth = 20),
     verbose = FALSE
     )
 }
